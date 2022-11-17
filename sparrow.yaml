@@ -6,7 +6,11 @@ tasks:
     code: |
       set -e
 
-      PATH=$(go env GOPATH)/bin:$PATH
+      export PATH=$(go env GOPATH)/bin:$PATH
+
+      echo $PATH
+
+      ls -l ~/go/bin
       
       cat << 'HERE' > score.yaml
       apiVersion: score.dev/v1b1
