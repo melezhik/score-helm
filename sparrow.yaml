@@ -7,7 +7,7 @@ tasks:
       set -e
 
       echo $PATH
-
+      ls -l /usr/local/bin/
       cat << 'HERE' > score.yaml
       apiVersion: score.dev/v1b1
       metadata:
