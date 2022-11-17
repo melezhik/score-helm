@@ -27,8 +27,8 @@ tasks:
     name: install
     language: Bash
     code: |
-      GOBIN=/usr/local/bin 
-      sudo go --preserve-env=GOBIN install -v github.com/score-spec/score-compose/cli@latest
+      sudo env GOBIN=/usr/local/bin \
+        go install -v github.com/score-spec/score-compose/cli@latest
     depends:
       -
         name: install-go
