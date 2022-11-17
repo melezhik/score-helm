@@ -6,12 +6,8 @@ tasks:
     code: |
       set -e
 
-      export PATH=$(go env GOPATH)/bin:$PATH
-
       echo $PATH
 
-      ls -l ~/go/bin
-      
       cat << 'HERE' > score.yaml
       apiVersion: score.dev/v1b1
       metadata:
@@ -31,7 +27,7 @@ tasks:
     name: install
     language: Bash
     code: |
-      go install -v github.com/score-spec/score-compose/cli@latest
+      GOBIN=/usr/local/bin go install -v github.com/score-spec/score-compose/cli@latest
     depends:
       -
         name: install-go
