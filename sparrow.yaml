@@ -3,7 +3,7 @@ tasks:
     name: score-helm-run
     default: true
     language: Bash
-    code:
+    code: |
       set -e
       
       cat << 'HERE' > score.yaml
