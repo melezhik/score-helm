@@ -1,0 +1,38 @@
+tasks:
+  - 
+    name: score-helm-run
+    default: true
+    language: Bash
+    code:
+      set -e
+      
+      cat << 'HERE' > score.yaml
+      apiVersion: score.dev/v1b1
+      metadata:
+        name: hello-world
+
+      containers:
+        container-id:
+          image: busybox
+      HERE
+      
+      score-helm run -f ./score.yaml -o ./values.yaml .
+    
+    depends:
+      -
+        name: install
+  -
+    name: install
+    language: Bash
+    code: |
+      go install -v github.com/score-spec/score-compose/cli@latest
+    depends:
+      -
+        name: install-go
+  -
+    name: install-go
+    language: Bash
+    code: |
+      sudo apk add go \
+      --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
+  
